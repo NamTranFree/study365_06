@@ -16,11 +16,11 @@ const pool = mysql.createPool({
 // Kiểm tra kết nối
 pool.getConnection()
   .then((connection) => {
-    console.log("✅ Kết nối Database thành công!");
+    console.log(" Kết nối Database thành công!");
     connection.release();
   })
   .catch((error) => {
-    console.error("❌ Lỗi kết nối Database:", error.message);
+    console.error(" Lỗi kết nối Database:", error.message);
   });
 
 module.exports = pool;

@@ -482,14 +482,24 @@ exports.getExams = async (req, res) => {
   try {
     connection = await pool.getConnection();
     const subjectId = req.query.subject_id ? Number(req.query.subject_id) : null;
+    const userId = req.userId;
 
     let sql = `SELECT e.id, e.exam_name, e.description, e.duration, e.total_questions,
               e.passing_score, e.available_from, e.available_to,
-              s.subject_name, s.id AS subject_id
+              s.subject_name, s.id AS subject_id,
+              ua.status AS attempt_status,
+              ua.score AS attempt_score,
+              ua.id AS attempt_id
                FROM exams e
                JOIN subjects s ON s.id = e.subject_id
+               LEFT JOIN (
+                 SELECT exam_id, status, score, id
+                 FROM exam_attempts
+                 WHERE user_id = ?
+                 ORDER BY started_at DESC
+               ) ua ON ua.exam_id = e.id
                WHERE e.is_published = 1`;
-    const params = [];
+    const params = [userId];
 
     if (subjectId && Number.isInteger(subjectId) && subjectId > 0) {
       sql += " AND e.subject_id = ?";
@@ -502,10 +512,12 @@ exports.getExams = async (req, res) => {
 
     const exams = examRows.map((exam) => {
       const availabilityStatus = getExamAvailabilityStatus(exam.available_from, exam.available_to);
+      // attempt_status: null = chưa làm, 'in_progress' = đang làm, 'submitted'/'completed' = đã nộp
       return {
         ...exam,
         availability_status: availabilityStatus,
         can_start: availabilityStatus === "open",
+        user_attempt_status: exam.attempt_status || "not_started",
       };
     });
 
