@@ -1,0 +1,28 @@
+{
+  "name": "othi-backend",
+  "version": "1.0.0",
+  "description": "Backend API cho hệ thống ôn thi và thi thử",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "keywords": [
+    "exam",
+    "learning",
+    "quiz"
+  ],
+  "author": "",
+  "license": "MIT"
+}

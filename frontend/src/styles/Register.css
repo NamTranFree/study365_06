@@ -1,0 +1,197 @@
+.register-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.register-banner {
+  flex: 1;
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 40px 20px;
+}
+
+.register-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-header h1 {
+  font-size: 36px;
+  color: #0066cc;
+  margin: 0 0 20px 0;
+  font-weight: 800;
+}
+
+.register-header h2 {
+  font-size: 22px;
+  color: #1f3856;
+  margin: 0;
+  font-weight: 700;
+}
+
+.register-form {
+  width: 100%;
+  max-width: 350px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #1e3550;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.register-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.register-btn:hover:not(:disabled) {
+  background-color: #0052a3;
+}
+
+.register-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  border-left: 4px solid #c33;
+}
+
+.success-message {
+  background-color: #efe;
+  color: #3c3;
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  border-left: 4px solid #3c3;
+}
+
+.register-footer {
+  text-align: center;
+  margin-top: 15px;
+  color: #506985;
+  font-size: 14px;
+}
+
+.login-link {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.login-link:hover {
+  color: #0052a3;
+}
+
+.banner-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.banner-content h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.banner-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.banner-content ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.banner-content ul li {
+  font-size: 15px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+  }
+
+  .register-banner {
+    flex: 0.5;
+    order: 2;
+  }
+
+  .register-card {
+    flex: 1;
+    order: 1;
+  }
+
+  .register-header h1 {
+    font-size: 24px;
+  }
+
+  .register-header h2 {
+    font-size: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+}
