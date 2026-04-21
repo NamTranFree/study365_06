@@ -576,6 +576,28 @@
   margin: 2px 0 0;
 }
 
+.exam-user-status {
+  display: inline-block;
+  margin: 5px 0 0;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.exam-user-status--not_started {
+  background: #f0f0f0;
+  color: #777;
+}
+.exam-user-status--in_progress {
+  background: #fff3cd;
+  color: #856404;
+}
+.exam-user-status--submitted,
+.exam-user-status--completed {
+  background: #d1f0e0;
+  color: #1a6b3c;
+}
+
 .exam-header-bar {
   display: flex;
   align-items: center;

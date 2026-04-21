@@ -332,6 +332,13 @@ function Dashboard({ section = "practice" }) {
                     </p>
                     {exam.description ? <p className="exam-desc">{exam.description}</p> : null}
                     {exam.passing_score ? <p className="exam-passing">Điểm đạt: {exam.passing_score}/10</p> : null}
+                    <p className={`exam-user-status exam-user-status--${exam.user_attempt_status || "not_started"}`}>
+                      {exam.user_attempt_status === "in_progress"
+                        ? "Đang làm"
+                        : exam.user_attempt_status === "submitted" || exam.user_attempt_status === "completed"
+                          ? `Đã nộp${exam.attempt_score != null ? ` — ${exam.attempt_score}/10` : ""}`
+                          : "Chưa làm"}
+                    </p>
                   </div>
                   <button
                     type="button"
@@ -343,7 +350,11 @@ function Dashboard({ section = "practice" }) {
                       ? "Chưa đến giờ"
                       : exam.availability_status === "expired"
                         ? "Đã hết giờ"
-                        : "Bắt đầu thi"}
+                        : exam.user_attempt_status === "in_progress"
+                          ? "Tiếp tục thi"
+                          : exam.user_attempt_status === "submitted" || exam.user_attempt_status === "completed"
+                            ? "Thi lại"
+                            : "Bắt đầu thi"}
                   </button>
                 </div>
               ))}
